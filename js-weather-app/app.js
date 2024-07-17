@@ -1,9 +1,7 @@
-// const city = document.getElementById('city');
 const temp = document.getElementById('temp');
 const humidity = document.getElementById('humidity');
 const wind = document.getElementById('wind');
 const weatherIcon = document.getElementById('weatherIcon');
-// const weather = document.getElementById('weather');
 
 const searchBox = document.querySelector('#search input');
 const searchBtn = document.querySelector('#search button');
@@ -22,7 +20,6 @@ async function checkWeather(city) {
 
     let data = await response.json();
 
-    // city.innerHTML = data.name;
     document.getElementById("city").innerHTML = data.name;
     temp.innerHTML = Math.round(data.main.temp) + '°C';
     humidity.innerHTML = data.main.humidity + '%';

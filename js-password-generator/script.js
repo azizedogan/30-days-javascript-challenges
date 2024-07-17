@@ -25,5 +25,3 @@ function copyPassword() {
     passwordBox.select();
     document.execCommand("copy");
 }
-
-// Nt1%dI}^LCVH  Wo1$)86}#lHE
