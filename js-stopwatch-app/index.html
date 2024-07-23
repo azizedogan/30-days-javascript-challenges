@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StapWatch App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+<body>
+
+    <div class="stopwatch">
+        <h1 id="displayTime">00:00:00</h1>
+        <div class="buttons">
+            <i class="fa-solid fa-stop fa-lg" onclick="watchStop()"></i>
+            <i class="fa-solid fa-play fa-2xl" onclick="watchStart()"></i>
+            <i class="fa-solid fa-reply fa-lg" onclick="watchReset()"></i>
+        </div>
+    </div>
+
+    <script>
+
+        let [seconds, minutes, hours] = [0, 0, 0];
+        let displayTime = document.getElementById("displayTime");
+        let timer = null;
+
+        function stopwatch() {
+            seconds++;
+            if(seconds == 60) {
+                seconds = 0;
+                minutes++;
+                if(minutes == 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+
+            let h = hours < 10 ? "0" + hours : hours;
+            let m = minutes < 10 ? "0" + minutes : minutes;
+            let s = seconds < 10 ? "0" + seconds : seconds;
+
+            displayTime.innerHTML = h + ":" + m + ":" + s;
+        }
+
+        function watchStart() {
+            if(timer !== null) {
+                clearInterval(timer);
+            }
+
+           timer = setInterval(stopwatch,1000);
+
+        }
+
+        function watchStop() {
+            clearInterval(timer);
+        }
+
+        function watchReset() {
+            clearInterval(timer);
+            [seconds, minutes, hours] = [0, 0,  0];
+            displayTime.innerHTML = "00:00:00";
+        }
+
+    </script>
+    
+</body>
+</html>
